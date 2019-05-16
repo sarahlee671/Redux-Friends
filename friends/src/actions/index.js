@@ -10,7 +10,7 @@ export const LOGIN_ERROR = 'LOGIN_ERROR';
 
 export const fetchFriends = () => dispatch => {
     dispatch({ type: FETCH_FRIENDS_START });
-    axiosWithAuth ()
+    axiosWithAuth 
         .get('http://localhost:5000/api/friends')
         .then(res => {
             dispatch({type: FETCH_FRIENDS_SUCCESS, payload: res.data})
