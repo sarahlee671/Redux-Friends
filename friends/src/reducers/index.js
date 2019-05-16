@@ -3,7 +3,7 @@ const initialState = {
     friends: [],
     fetchingFriends: false,
     error: '',
-    token: ''
+    ifLoggingIn: false
 }
 
 const reducer = (state = initialState, action) => {
@@ -12,11 +12,13 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 fetchingFriends: true,
+                error: ''
             };
         case FETCH_FRIENDS_SUCCESS:
             return {
                 ...state,
                 fetchingFriends: false,
+                error: '',
                 friends: [...state.friends, ...action.payload]
             };
         case FETCH_FRIENDS_ERROR:
@@ -28,19 +30,17 @@ const reducer = (state = initialState, action) => {
         case LOGIN_START:
             return {
                 ...state,
+                isLoggingIn: true,
+                error: ''
             };
         case LOGIN_SUCCESS:
             return {
                 ...state,
-                error: '',
-                token: action.payload
+                isLoggingIn: false,
             };
-        case LOGIN_ERROR:
-            return {
-                ...state,
-                error: action.payload
-            }
         default:
             return state;
     }
 }
+
+export default reducer;

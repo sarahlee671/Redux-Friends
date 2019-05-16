@@ -1,12 +1,11 @@
 import React from 'react';
-import {Route} from 'react-router-dom';
+import {Route, NavLink} from 'react-router-dom';
 import './App.css';
 import LoginForm from './components/LoginForm';
+import FriendsList from '../src/components/FriendsList'
 
 class App extends React.Component {
-  constructor() {
-    super();
-  }
+
   render() {
     return (
       <div className="App">
@@ -16,7 +15,12 @@ class App extends React.Component {
           <NavLink exact to="/login">Login</NavLink>
 
         </nav>
-        <Route path="/login" render={props => <LoginForm />} />
+        {/* <LoginForm /> */}
+        <FriendsList />
+        
+        <Route path="/login" component={LoginForm} />
+        {/* <PrivateRoute exact path ="/protected" component={FriendsListView} /> */}
+         
       </div>
     );
   }
