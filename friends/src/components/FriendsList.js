@@ -1,4 +1,5 @@
 import React from "react";
+import Friend from './Friend';
 
 const FriendsList = props => {
     return (
@@ -11,4 +12,4 @@ const FriendsList = props => {
         
 }
 
-export default FriendsList;
+export default FriendsList;<Friend key={friend.name} friend={friend} />;
