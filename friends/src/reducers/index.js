@@ -1,3 +1,4 @@
+import {FETCH_FRIENDS_START, FETCH_FRIENDS_SUCCESS, FETCH_FRIENDS_ERROR, LOGIN_START, LOGIN_SUCCESS, LOGIN_ERROR} from "../actions";
 const initialState = {
     friends: [],
     fetchingFriends: false,
