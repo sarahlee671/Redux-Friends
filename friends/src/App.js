@@ -1,26 +1,32 @@
 import React from 'react';
-import {Route, Link} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import './App.css';
-import LoginForm from './components/LoginForm';
+import Login from './components/Login';
 import FriendsList from '../src/components/FriendsList';
 import PrivateRoute from './PrivateRoute';
 
 function App() {
 
   return (
-    <div className="App">
+    <Router>
+      <div className="App">
 
-      <h1 className="title">My Title</h1>
-      <nav className="nav-links">
-        <Link to="/login">Login</Link>
-        <Link to="/protected">Protected Page</Link>
-      </nav>
-    
+        <h1 className="title">Friends</h1>
+        <div>
+          <div>
+            <Link to="/login">Login</Link>
+          </div>
+          <div>
+            <Link to="/protected">Protected Page</Link>
+          </div>
+        </div>
 
-      <Route path="/login" component={LoginForm} />
-      <PrivateRoute exact path ="/protected" component={FriendsList} />
 
-    </div>
+        <Route path="/login" component={Login} />
+        <PrivateRoute exact path="/protected" component={FriendsList} />
+
+      </div>
+    </Router>
   );
 
 }

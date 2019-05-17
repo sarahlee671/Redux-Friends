@@ -19,7 +19,7 @@ class Login extends React.Component {
         });
     };
 
-    submitLogin = e => {
+    login = e => {
         e.preventDefault();
         this.props.login(this.state.credentials)
             .then(() => {
@@ -34,14 +34,7 @@ class Login extends React.Component {
                 <form onSubmit={this.login}>
                     <input type="text" name="username" value={this.state.credentials.username} onChange={this.handleChanges} placeholder="username"/>
                     <input type="text" name="password" value={this.state.credentials.password} onChange={this.handleChanges} placeholder="password"/>
-                    <button> 
-                        {this.props.fetchingFriends ? (
-                            'yes'
-                            // <Loader type="ThreeDots" color="#1f2a38" height="12" width="26" />           
-                        ) : (
-                            'Log in'
-                        )}
-                    </button>
+                    <button onClick={this.state.login}>'Log in'</button>
                 </form>
             </div>
         )

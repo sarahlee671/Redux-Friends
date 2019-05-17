@@ -1,42 +1,35 @@
 import React from "react";
 import Friend from './Friend';
 import {connect} from "react-redux";
-import {fetchFriends} from "../actions"
+import {fetchFriends} from "../actions";
+import {withRouter} from 'react-router-dom';
 
 class FriendsList extends React.Component {
-    constructor() {
-        super();
-    }
-
+   
     componentDidMount() {
         this.props.fetchFriends();
     }
 
     render() {
-        if(this.props.fetchingFriends) {
 
-        }
         return (
             <div>
-                {(this.props.friends).map(friend => {
-                    return <Friend key={friend.name} friend={friend} />;
-                })}
+                {this.props.friends.map(friend => 
+                     <Friend key={friend.id} friend={friend} />)}
             </div>
         )
     }
         
 }
 
-const mapStateToProps = state => {
-    console.log(state);
-    return {
-      friends: state.friends,
-      error: state.error,
-      fetchingFriends: state.fetchingFriends
-    };
-  };
+const mapStateToProps = ({ friends, fetchingFriends }) => ({
+    friends,
+    fetchingFriends
+});
   
-  export default connect(
-    mapStateToProps,
-    { fetchFriends }
-  )(FriendsList);
+export default withRouter(
+    connect(
+        mapStateToProps,
+        { fetchFriends }
+    )(FriendsList)
+);
