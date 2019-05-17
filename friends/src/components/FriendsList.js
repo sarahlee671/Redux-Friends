@@ -22,14 +22,15 @@ class FriendsList extends React.Component {
         
 }
 
-const mapStateToProps = ({ friends, fetchingFriends }) => ({
+const mapStateToProps = ({ deletingFriend, friends, fetchingFriends }) => ({
     friends,
-    fetchingFriends
+    fetchingFriends,
+    deletingFriend
 });
   
 export default withRouter(
     connect(
         mapStateToProps,
-        { fetchFriends }
+        { fetchFriends, deleteFriends }
     )(FriendsList)
 );
